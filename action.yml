@@ -1,0 +1,8 @@
+name: "Check description for JIRA ticket"
+description: "This action will check if the PR description contains valid JIRA ticket"
+branding:
+  icon: "info"
+  color: "green"
+runs:
+  using: "node16"
+  main: "index.js"
