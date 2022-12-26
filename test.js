@@ -9,18 +9,12 @@ const JIRA_TICKET_REGEX =
   /[[A-Z]{2,}-\d+]\((https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})\/[A-Z]{2,}-\d+\)/gim;
 
 function run() {
-  const pullRequest = github.context.payload.pull_request;
-
-  console.log("[Check-description] ", { pullRequest });
+  const pullRequest =
+    "-   [WRS-1](https://support.chili-publish.com/projects/WRS/issues/WRS-1)";
 
   if (pullRequest) {
-    const body = pullRequest.body;
-
-    console.log("[Check-description] ", { body });
-
-    const match = body?.match(JIRA_TICKET_REGEX);
-
-    console.log("[Check-description] ", { match });
+    const body = pullRequest;
+    const match = body.match(JIRA_TICKET_REGEX);
 
     if (!match) {
       core.setFailed(
