@@ -11,16 +11,9 @@ const JIRA_TICKET_REGEX =
 function run() {
   const pullRequest = github.context.payload.pull_request;
 
-  console.log("[Check-description] ", { pullRequest });
-
   if (pullRequest) {
     const body = pullRequest.body;
-
-    console.log("[Check-description] ", { body });
-
     const match = body?.match(JIRA_TICKET_REGEX);
-
-    console.log("[Check-description] ", { match });
 
     if (!match) {
       core.setFailed(
